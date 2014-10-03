@@ -40,6 +40,7 @@ SET(SOURCES
     ${FVR_SOURCE_DIR}/FFTShift2D_OutofPlace.cpp
     ${FVR_SOURCE_DIR}/FFTShift3D_InPlace.cpp
     ${FVR_SOURCE_DIR}/FFTShift3D_OutofPlace.cpp
+    ${FVR_SOURCE_DIR}/FFTShiftProfiler.cpp
     ${FVR_SOURCE_DIR}/Profiler.cpp
 
 

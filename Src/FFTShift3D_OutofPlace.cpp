@@ -4,11 +4,11 @@
 
 #include <iostream>
 /**
- * @brief FFTShift3D_OUT_OF_PLACE_SERIAL
+ * @brief FFTShift3D_OUT_OF_PLACE
  * @param n
  */
 template <typename T>
-T FFTShift3D_OUT_OF_PLACE_SERIAL(const int n) {
+T FFTShift3D_OUT_OF_PLACE(const int n, const THREADING threading) {
 
     // Allocate the arrays
     std::cout << "Allocation" << std::endl;
@@ -25,40 +25,17 @@ T FFTShift3D_OUT_OF_PLACE_SERIAL(const int n) {
 
     // Do the FFT Shift
     std::cout << "Executing operation" << std::endl;
-    serialFFTShift3D<T>(a, b, n);
-
-    // Free array
-    std::cout << "Freeing memory" << std::endl;
-    delete [] a;
-    delete [] b;
-
-    return 0;
-}
-
-/**
- * @brief FFTShift3D_OUT_OF_PLACE_PARALLEL
- * @param n
- */
-template <typename T>
-T FFTShift3D_OUT_OF_PLACE_PARALLEL(const int n) {
-
-    // Allocate the arrays
-    std::cout << "Allocation" << std::endl;
-
-    const int volumeSize = n * n * n;
-    T* a = new T[volumeSize];
-    T* b = new T[volumeSize];
-
-    std::cout << "Initialization" << std::endl;
-    for (int i = 0; i < volumeSize; i++) {
-        a[i] = RNG (T(0));
-        b[i] = 0;
+    switch (threading) {
+    case SERIAL:
+        serialFFTShift3D<T>(a, b, n);
+        break;
+    case PARALLEL:
+        parallelFFTShift3D<T>(a, b, n);
+        break;
+    default:
+        break;
     }
 
-    // Do the FFT Shift
-    std::cout << "Executing operation" << std::endl;
-    parallelFFTShift3D<T>(a, b, n);
-
     // Free array
     std::cout << "Freeing memory" << std::endl;
     delete [] a;
@@ -69,33 +46,19 @@ T FFTShift3D_OUT_OF_PLACE_PARALLEL(const int n) {
 
 
 template
-char FFTShift3D_OUT_OF_PLACE_SERIAL(const int n);
+char FFTShift3D_OUT_OF_PLACE(const int n, const THREADING threading) ;
 template
-unsigned char FFTShift3D_OUT_OF_PLACE_SERIAL(const int n);
+unsigned char FFTShift3D_OUT_OF_PLACE(const int n, const THREADING threading) ;
 template
-short FFTShift3D_OUT_OF_PLACE_SERIAL(const int n);
+short FFTShift3D_OUT_OF_PLACE(const int n, const THREADING threading) ;
 template
-unsigned short FFTShift3D_OUT_OF_PLACE_SERIAL(const int n);
+unsigned short FFTShift3D_OUT_OF_PLACE(const int n, const THREADING threading) ;
 template
-int FFTShift3D_OUT_OF_PLACE_SERIAL(const int n);
+int FFTShift3D_OUT_OF_PLACE(const int n, const THREADING threading) ;
 template
-float FFTShift3D_OUT_OF_PLACE_SERIAL(const int n);
+float FFTShift3D_OUT_OF_PLACE(const int n, const THREADING threading) ;
 template
-double FFTShift3D_OUT_OF_PLACE_SERIAL(const int n);
+double FFTShift3D_OUT_OF_PLACE(const int n, const THREADING threading) ;
 
 
-template
-char FFTShift3D_OUT_OF_PLACE_PARALLEL(const int n);
-template
-unsigned char FFTShift3D_OUT_OF_PLACE_PARALLEL(const int n);
-template
-short FFTShift3D_OUT_OF_PLACE_PARALLEL(const int n);
-template
-unsigned short FFTShift3D_OUT_OF_PLACE_PARALLEL(const int n);
-template
-int FFTShift3D_OUT_OF_PLACE_PARALLEL(const int n);
-template
-float FFTShift3D_OUT_OF_PLACE_PARALLEL(const int n);
-template
-double FFTShift3D_OUT_OF_PLACE_PARALLEL(const int n);
 

@@ -7,15 +7,13 @@
 #include <vector>
 #include <stdlib.h>
 
+#include "Common.h"
 #include "RandomNumberGeneration.h"
 #include "FFTShift2D_InPlace.h"
 #include "FFTShift2D_OutofPlace.h"
 #include "FFTShift3D_InPlace.h"
 #include "FFTShift3D_OutofPlace.h"
 
-typedef unsigned char uchar;
-typedef unsigned short ushort;
-typedef unsigned int uint;
 
 int main(int argc, char** argv) {
 
@@ -49,19 +47,19 @@ int main(int argc, char** argv) {
         if (threading == "serial" || threading == "s") {
             if (type == "in-place" || type == "ip") {
                 if (datatype == "char") {
-                    char c = FFTShift2D_IN_PLACE_SERIAL <char> (n);
+                    char c = FFTShift2D_IN_PLACE <char> (n, SERIAL);
                 } else if (datatype == "uchar") {
-                    uchar uc = FFTShift2D_IN_PLACE_SERIAL <uchar> (n);
+                    uchar uc = FFTShift2D_IN_PLACE <uchar> (n, SERIAL);
                 } else if (datatype == "short") {
-                    short s = FFTShift2D_IN_PLACE_SERIAL <short> (n);
+                    short s = FFTShift2D_IN_PLACE <short> (n, SERIAL);
                 } else if (datatype == "half") {
 
                 } else if (datatype == "int") {
-                    int i = FFTShift2D_IN_PLACE_SERIAL <int> (n);
+                    int i = FFTShift2D_IN_PLACE <int> (n, SERIAL);
                 } else if (datatype == "float") {
-                    float f = FFTShift2D_IN_PLACE_SERIAL <float> (n);
+                    float f = FFTShift2D_IN_PLACE <float> (n, SERIAL);
                 } else if (datatype == "double") {
-                    double d = FFTShift2D_IN_PLACE_SERIAL <double> (n);
+                    double d = FFTShift2D_IN_PLACE <double> (n, SERIAL);
                 } else if (datatype == "complex-half") {
 
                 } else if (datatype == "complex-float") {
@@ -73,19 +71,19 @@ int main(int argc, char** argv) {
                 }
             } else if (type == "out-of-place" || type == "op") {
                 if (datatype == "char") {
-                    char c = FFTShift2D_OUT_OF_PLACE_SERIAL <char> (n);
+                    char c = FFTShift2D_OUT_OF_PLACE <char> (n, SERIAL);
                 } else if (datatype == "uchar") {
-                    uchar uc = FFTShift2D_OUT_OF_PLACE_SERIAL <uchar> (n);
+                    uchar uc = FFTShift2D_OUT_OF_PLACE <uchar> (n, SERIAL);
                 } else if (datatype == "short") {
-                    short s = FFTShift2D_OUT_OF_PLACE_SERIAL <short> (n);
+                    short s = FFTShift2D_OUT_OF_PLACE <short> (n, SERIAL);
                 } else if (datatype == "half") {
 
                 } else if (datatype == "int") {
-                    int i = FFTShift2D_OUT_OF_PLACE_SERIAL <int> (n);
+                    int i = FFTShift2D_OUT_OF_PLACE <int> (n, SERIAL);
                 } else if (datatype == "float") {
-                    float f = FFTShift2D_OUT_OF_PLACE_SERIAL <float> (n);
+                    float f = FFTShift2D_OUT_OF_PLACE <float> (n, SERIAL);
                 } else if (datatype == "double") {
-                    double d = FFTShift2D_OUT_OF_PLACE_SERIAL <double> (n);
+                    double d = FFTShift2D_OUT_OF_PLACE <double> (n, SERIAL);
                 } else if (datatype == "complex-half") {
 
                 } else if (datatype == "complex-float") {
@@ -103,19 +101,19 @@ int main(int argc, char** argv) {
         } else if (threading == "parallel" || threading == "p") {
             if (type == "in-place" || type == "ip") {
                 if (datatype == "char") {
-                    char c = FFTShift2D_IN_PLACE_PARALLEL <char> (n);
+                    char c = FFTShift2D_IN_PLACE <char> (n, PARALLEL);
                 } else if (datatype == "uchar") {
-                    uchar uc = FFTShift2D_IN_PLACE_PARALLEL <uchar> (n);
+                    uchar uc = FFTShift2D_IN_PLACE <uchar> (n, PARALLEL);
                 } else if (datatype == "short") {
-                    short s = FFTShift2D_IN_PLACE_PARALLEL <short> (n);
+                    short s = FFTShift2D_IN_PLACE <short> (n, PARALLEL);
                 } else if (datatype == "half") {
 
                 } else if (datatype == "int") {
-                    int i = FFTShift2D_IN_PLACE_PARALLEL <char> (n);
+                    int i = FFTShift2D_IN_PLACE <char> (n, PARALLEL);
                 } else if (datatype == "float") {
-                    float f = FFTShift2D_IN_PLACE_PARALLEL <float> (n);
+                    float f = FFTShift2D_IN_PLACE <float> (n, PARALLEL);
                 } else if (datatype == "double") {
-                    double d = FFTShift2D_IN_PLACE_PARALLEL <double> (n);
+                    double d = FFTShift2D_IN_PLACE <double> (n, PARALLEL);
                 } else if (datatype == "complex-half") {
 
                 } else if (datatype == "complex-float") {
@@ -128,19 +126,19 @@ int main(int argc, char** argv) {
 
             } else if (type == "out-of-place" || type == "op") {
                 if (datatype == "char") {
-                    char c = FFTShift2D_OUT_OF_PLACE_PARALLEL <char> (n);
+                    char c = FFTShift2D_OUT_OF_PLACE <char> (n, PARALLEL);
                 } else if (datatype == "uchar") {
-                    uchar uc = FFTShift2D_OUT_OF_PLACE_PARALLEL <uchar> (n);
+                    uchar uc = FFTShift2D_OUT_OF_PLACE <uchar> (n, PARALLEL);
                 } else if (datatype == "short") {
-                    short s = FFTShift2D_OUT_OF_PLACE_PARALLEL <short> (n);
+                    short s = FFTShift2D_OUT_OF_PLACE <short> (n, PARALLEL);
                 } else if (datatype == "half") {
 
                 } else if (datatype == "int") {
-                    int i = FFTShift2D_OUT_OF_PLACE_PARALLEL <int> (n);
+                    int i = FFTShift2D_OUT_OF_PLACE <int> (n, PARALLEL);
                 } else if (datatype == "float") {
-                    float f = FFTShift2D_OUT_OF_PLACE_PARALLEL <float> (n);
+                    float f = FFTShift2D_OUT_OF_PLACE <float> (n, PARALLEL);
                 } else if (datatype == "double") {
-                    double d = FFTShift2D_OUT_OF_PLACE_PARALLEL <double> (n);
+                    double d = FFTShift2D_OUT_OF_PLACE <double> (n, PARALLEL);
                 } else if (datatype == "complex-half") {
 
                 } else if (datatype == "complex-float") {
@@ -163,19 +161,19 @@ int main(int argc, char** argv) {
         if (threading == "serial" || threading == "s") {
             if (type == "in-place" || type == "ip") {
                 if (datatype == "char") {
-                    char c = FFTShift3D_IN_PLACE_SERIAL <char> (n);
+                    char c = FFTShift3D_IN_PLACE <char> (n, SERIAL);
                 } else if (datatype == "uchar") {
-                    uchar uc = FFTShift3D_IN_PLACE_SERIAL <uchar> (n);
+                    uchar uc = FFTShift3D_IN_PLACE <uchar> (n, SERIAL);
                 } else if (datatype == "short") {
-                    short s = FFTShift3D_IN_PLACE_SERIAL <short> (n);
+                    short s = FFTShift3D_IN_PLACE <short> (n, SERIAL);
                 } else if (datatype == "half") {
 
                 } else if (datatype == "int") {
-                    int i = FFTShift3D_IN_PLACE_SERIAL <int> (n);
+                    int i = FFTShift3D_IN_PLACE <int> (n, SERIAL);
                 } else if (datatype == "float") {
-                    float f = FFTShift3D_IN_PLACE_SERIAL <float> (n);
+                    float f = FFTShift3D_IN_PLACE <float> (n, SERIAL);
                 } else if (datatype == "double") {
-                    double d = FFTShift3D_IN_PLACE_SERIAL <double> (n);
+                    double d = FFTShift3D_IN_PLACE <double> (n, SERIAL);
                 } else if (datatype == "complex-half") {
 
                 } else if (datatype == "complex-float") {
@@ -188,19 +186,19 @@ int main(int argc, char** argv) {
 
             } else if (type == "out-of-place" || type == "op") {
                 if (datatype == "char") {
-                    char c = FFTShift3D_OUT_OF_PLACE_SERIAL <char> (n);
+                    char c = FFTShift3D_OUT_OF_PLACE <char> (n, SERIAL);
                 } else if (datatype == "uchar") {
-                    uchar uc = FFTShift3D_OUT_OF_PLACE_SERIAL <uchar> (n);
+                    uchar uc = FFTShift3D_OUT_OF_PLACE <uchar> (n, SERIAL);
                 } else if (datatype == "short") {
-                    short s = FFTShift3D_OUT_OF_PLACE_SERIAL <short> (n);
+                    short s = FFTShift3D_OUT_OF_PLACE <short> (n, SERIAL);
                 } else if (datatype == "half") {
 
                 } else if (datatype == "int") {
-                    int i = FFTShift3D_OUT_OF_PLACE_SERIAL <int> (n);
+                    int i = FFTShift3D_OUT_OF_PLACE <int> (n, SERIAL);
                 } else if (datatype == "float") {
-                    float f = FFTShift3D_OUT_OF_PLACE_SERIAL <float> (n);
+                    float f = FFTShift3D_OUT_OF_PLACE <float> (n, SERIAL);
                 } else if (datatype == "double") {
-                    double d = FFTShift3D_OUT_OF_PLACE_SERIAL <double> (n);
+                    double d = FFTShift3D_OUT_OF_PLACE <double> (n, SERIAL);
                 } else if (datatype == "complex-half") {
 
                 } else if (datatype == "complex-float") {
@@ -218,19 +216,19 @@ int main(int argc, char** argv) {
         } else if (threading == "parallel" || threading == "p") {
             if (type == "in-place" || type == "ip") {
                 if (datatype == "char") {
-                    char c = FFTShift3D_IN_PLACE_PARALLEL <char> (n);
+                    char c = FFTShift3D_IN_PLACE <char> (n, PARALLEL);
                 } else if (datatype == "uchar") {
-                    uchar uc = FFTShift3D_IN_PLACE_PARALLEL <uchar> (n);
+                    uchar uc = FFTShift3D_IN_PLACE <uchar> (n, PARALLEL);
                 } else if (datatype == "short") {
-                    short s = FFTShift3D_IN_PLACE_PARALLEL <short> (n);
+                    short s = FFTShift3D_IN_PLACE <short> (n, PARALLEL);
                 } else if (datatype == "half") {
 
                 } else if (datatype == "int") {
-                    int i = FFTShift3D_IN_PLACE_PARALLEL <int> (n);
+                    int i = FFTShift3D_IN_PLACE <int> (n, PARALLEL);
                 } else if (datatype == "float") {
-                    float f = FFTShift3D_IN_PLACE_PARALLEL <float> (n);
+                    float f = FFTShift3D_IN_PLACE <float> (n, PARALLEL);
                 } else if (datatype == "double") {
-                    double d = FFTShift3D_IN_PLACE_PARALLEL <double> (n);
+                    double d = FFTShift3D_IN_PLACE <double> (n, PARALLEL);
                 } else if (datatype == "complex-half") {
 
                 } else if (datatype == "complex-float") {
@@ -243,19 +241,19 @@ int main(int argc, char** argv) {
 
             } else if (type == "out-of-place" || type == "op") {
                 if (datatype == "char") {
-                    char c = FFTShift3D_OUT_OF_PLACE_PARALLEL <char> (n);
+                    char c = FFTShift3D_OUT_OF_PLACE <char> (n, PARALLEL);
                 } else if (datatype == "uchar") {
-                    uchar uc = FFTShift3D_OUT_OF_PLACE_PARALLEL <uchar> (n);
+                    uchar uc = FFTShift3D_OUT_OF_PLACE <uchar> (n, PARALLEL);
                 } else if (datatype == "short") {
-                    short s = FFTShift3D_OUT_OF_PLACE_PARALLEL <short> (n);
+                    short s = FFTShift3D_OUT_OF_PLACE <short> (n, PARALLEL);
                 } else if (datatype == "half") {
 
                 } else if (datatype == "int") {
-                    int i = FFTShift3D_OUT_OF_PLACE_PARALLEL <int> (n);
+                    int i = FFTShift3D_OUT_OF_PLACE <int> (n, PARALLEL);
                 } else if (datatype == "float") {
-                    float f = FFTShift3D_OUT_OF_PLACE_PARALLEL <float> (n);
+                    float f = FFTShift3D_OUT_OF_PLACE <float> (n, PARALLEL);
                 } else if (datatype == "double") {
-                    double d = FFTShift3D_OUT_OF_PLACE_PARALLEL <double> (n);
+                    double d = FFTShift3D_OUT_OF_PLACE <double> (n, PARALLEL);
                 } else if (datatype == "complex-half") {
 
                 } else if (datatype == "complex-float") {

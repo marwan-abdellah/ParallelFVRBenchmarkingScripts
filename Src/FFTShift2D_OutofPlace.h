@@ -1,10 +1,10 @@
 #ifndef FFTSHIFT2D_OUTOFPLACE_H
 #define FFTSHIFT2D_OUTOFPLACE_H
 
-template <typename T>
-T FFTShift2D_OUT_OF_PLACE_SERIAL(const int n);
+#include "Common.h"
 
 template <typename T>
-T FFTShift2D_OUT_OF_PLACE_PARALLEL(const int n);
+T FFTShift2D_OUT_OF_PLACE(const int n, const THREADING threading);
+
 
 #endif // FFTSHIFT2D_OUTOFPLACE_H

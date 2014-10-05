@@ -88,7 +88,6 @@ T ProfileFFTShift_3D(const SHIFT_TYPE type, const THREADING threading,
         std::cout << "Wrong operation type selection" << std::endl;
 
     return ret;
-
 }
 
 template char ProfileFFTShift_2D

@@ -32,7 +32,6 @@ SET(FVR_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Src)
 INCLUDE_DIRECTORIES(${FVR_SOURCE_DIR}/)
 
 SET(SOURCES
-    ${FVR_SOURCE_DIR}/ParallelFVR.cpp
     ${FVR_SOURCE_DIR}/RandomNumberGeneration.cpp
     ${FVR_SOURCE_DIR}/FFTShift2D.cpp
     ${FVR_SOURCE_DIR}/FFTShift3D.cpp
@@ -42,7 +41,12 @@ SET(SOURCES
     ${FVR_SOURCE_DIR}/FFTShift3D_OutofPlace.cpp
     ${FVR_SOURCE_DIR}/FFTShiftProfiler.cpp
     ${FVR_SOURCE_DIR}/Profiler.cpp
-
+    ${FVR_SOURCE_DIR}/FFT2D.cpp
+    ${FVR_SOURCE_DIR}/FFT3D_Single.cpp
+    ${FVR_SOURCE_DIR}/FFT3D_Double.cpp
+    ${FVR_SOURCE_DIR}/FFT3D_InPlace.cpp
+    ${FVR_SOURCE_DIR}/FFT3D_OutofPlace.cpp
+    ${FVR_SOURCE_DIR}/FFTProfiler.cpp
 
 )
 
@@ -50,4 +54,5 @@ SET(CMAKE_C_FLAGS " -fpermissive -fPIC -O3 -pthread -fopenmp -pipe -DLINUX -D_BO
 SET(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS}")
     
 # Generate the executable considering. 
-ADD_EXECUTABLE(pFVR ${SOURCES})
+ADD_EXECUTABLE(profileFFTShift ${FVR_SOURCE_DIR}/runFFTShiftProfiler.cpp ${SOURCES})
+ADD_EXECUTABLE(profileFFT ${FVR_SOURCE_DIR}/runFFTProfiler.cpp ${SOURCES})

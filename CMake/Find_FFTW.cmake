@@ -17,14 +17,11 @@
 # MA 02110-1301, USA.
 #####################################################################
 
-MESSAGE("-- FINDING FFTW")
-
 MARK_AS_ADVANCED(FFTW_ROOT)
-
 IF(FFTW_FOUND)
     MESSAGE(STATUS "FFTW Found")
-    MESSAGE("-- FFTW include directory : ${FFTW_INCLUDE_DIR}")
-    MESSAGE("-- FFTW library directory : ${FFTW_LIBRARIES}")
+    MESSAGE("FFTW include directory : ${FFTW_INCLUDE_DIR}")
+    MESSAGE("FFTW library directory : ${FFTW_LIBRARIES}")
     INCLUDE_DIRECTORIES(${FFTW_INCLUDE_DIR})
     LINK_LIBRARIES(${FFTW_LIBRARIES})
 ELSE(FFTW_FOUND)
@@ -54,20 +51,65 @@ ELSE(FFTW_FOUND)
             /opt/local/lib
         )
 
+    # Find the single precision thread library
+    FIND_LIBRARY(FFTW_LIB_SINGLE_THREADS NAMES fftw3f_threads
+        HINTS ${FFTW_ROOT}/lib
+        PATHS
+            /usr/lib
+            /usr/local/lib
+            /opt/local/lib
+        )
+
+    # Find the double precision openmp threaded library
+    FIND_LIBRARY(FFTW_LIB_DOUBLE_THREADS NAMES fftw3_threads
+        HINTS ${FFTW_ROOT}/lib
+        PATHS
+            /usr/lib
+            /usr/local/lib
+            /opt/local/lib
+        )
+
+    # Find the single precision openmp threaded library
+    FIND_LIBRARY(FFTW_LIB_SINGLE_OPENMP_THREADED NAMES fftw3f_omp
+        HINTS ${FFTW_ROOT}/lib
+        PATHS
+            /usr/lib
+            /usr/local/lib
+            /opt/local/lib
+        )
+
+    # Find the double precision openmp threaded library
+    FIND_LIBRARY(FFTW_LIB_DOUBLE_OPENMP_THREADED NAMES fftw3_omp
+        HINTS ${FFTW_ROOT}/lib
+        PATHS
+            /usr/lib
+            /usr/local/lib
+            /opt/local/lib
+        )
+
     # Group the libraries to link against the single and double precision at once
-    SET(FFTW_LIBS ${FFTW_LIB_SINGLE} ${FFTW_LIB_DOUBLE})
+    SET(FFTW_LIBS ${FFTW_LIB_SINGLE}
+                  ${FFTW_LIB_DOUBLE}
+                  ${FFTW_LIB_SINGLE_THREADS}
+                  ${FFTW_LIB_DOUBLE_THREADS}
+                  ${FFTW_LIB_SINGLE_OPENMP_THREADED}
+                  ${FFTW_LIB_DOUBLE_OPENMP_THREADED})
 
     INCLUDE(FindPackageHandleStandardArgs)
     FIND_PACKAGE_HANDLE_STANDARD_ARGS(FFTW DEFAULT_MSG
                                       FFTW_LIB_SINGLE
                                       FFTW_LIB_DOUBLE
+                                      FFTW_LIB_SINGLE_THREADS
+                                      FFTW_LIB_DOUBLE_THREADS
+                                      FFTW_LIB_SINGLE_OPENMP_THREADED
+                                      FFTW_LIB_DOUBLE_OPENMP_THREADED
                                       FFTW_INCLUDE_DIR
                                       )
 
     IF(FFTW_FOUND)
         MESSAGE(STATUS "FFTW Found")
-        MESSAGE("-- FFTW include directory : ${FFTW_INCLUDE_DIR}")
-        MESSAGE("-- FFTW library directory : ${FFTW_LIBS}")
+        MESSAGE("* FFTW include directory : ${FFTW_INCLUDE_DIR}")
+        MESSAGE("* FFTW library directory : ${FFTW_LIBS}")
         INCLUDE_DIRECTORIES(${FFTW_INCLUDE_DIR})
         LINK_LIBRARIES(${FFTW_LIBS})
     ELSE(FFTW_FOUND)

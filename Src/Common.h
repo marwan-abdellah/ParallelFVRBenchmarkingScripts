@@ -22,10 +22,19 @@ enum DATA_FORMAT {
     COMPLEX_DOUBLE = 7
 };
 
+enum PRECISION {
+    HALF_PRECISION = 0,
+    SINGLE_PRECISION = 1,
+    DOUBLE_PRECISION = 2,
+    QUAD_PRECISION = 3
+};
+
 enum SHIFT_TYPE {
     IN_PLACE = 0,
     OUT_OF_PLACE = 1
 };
+
+typedef SHIFT_TYPE FFT_ARRAY_TYPE;
 
 typedef unsigned char uchar;
 typedef unsigned short ushort;

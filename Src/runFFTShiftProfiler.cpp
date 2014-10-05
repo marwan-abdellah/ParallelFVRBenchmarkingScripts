@@ -10,7 +10,6 @@
 #include "Common.h"
 #include "FFTShiftProfiler.h"
 
-
 int main(int argc, char** argv) {
 
     if (argc < 4) {
@@ -82,8 +81,6 @@ int main(int argc, char** argv) {
 
     // Profile FFTShift operation
     ProfileFFTShift (dim, format, shiftType, thread, n);
-
-    // Profile other operation soon ...
 
     return 0;
 

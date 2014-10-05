@@ -16,6 +16,7 @@ Profiler::Profiler(const std::string function)
     Start();
 }
 
+
 /**
  * @brief Profiler::Start
  */
@@ -64,6 +65,7 @@ void Profiler::LogProfile()
               << " ms " << std::endl; */
 }
 
+
 /**
  * @brief Profiler::PrintProfile
  */
@@ -72,6 +74,7 @@ void Profiler::PrintProfile (std::string message)
     std::cout << GetFunctionName() << " : " << message
               << " [" << this->_timeMilliSeconds << " ms] " << std::endl;
 }
+
 
 /**
  * @brief Profiler::GetTimeInMicrosSeconds
@@ -82,6 +85,7 @@ double Profiler::GetTimeInMicrosSeconds(void) const
     return this->_timeMicroSeconds;
 }
 
+
 /**
  * @brief Profiler::GetTimeInMilliSeconds
  * @return
@@ -90,6 +94,7 @@ double Profiler::GetTimeInMilliSeconds(void) const
 {
     return this->_timeMilliSeconds;
 }
+
 
 /**
  * @brief Profiler::GetTimeInSeconds
@@ -124,6 +129,7 @@ void Profiler::WriteProfileToFile(std::string fileName)
     fileStream << logStream.rdbuf();
     fileStream.close();
 }
+
 
 /**
  * @brief Profiler::SetFunctionName

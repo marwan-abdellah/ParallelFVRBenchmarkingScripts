@@ -23,23 +23,29 @@ template <class T>
  */
 T RNG(T dummy) {
     if (typeid(dummy) == typeid(char)) {
-        return static_cast<char>(MIN_CHAR + static_cast <float> (rand()) /
-                                 (static_cast <float> (RAND_MAX / (MAX_CHAR - (MIN_CHAR)))));
+        return static_cast<char>
+                (MIN_CHAR + static_cast <float> (rand()) /
+                 (static_cast <float> (RAND_MAX / (MAX_CHAR - MIN_CHAR))));
     } else if (typeid(dummy) == typeid(unsigned char)) {
-        return static_cast<unsigned char>(static_cast <float> (rand()) /
-                                          (static_cast <float> (RAND_MAX / (MAX_UCHAR))));
+        return static_cast<unsigned char>
+                (static_cast <float> (rand()) /
+                 (static_cast <float> (RAND_MAX / (MAX_UCHAR))));
     } else if (typeid(dummy) == typeid(short)) {
-        return static_cast<short>(MIN_SHORT + static_cast <float> (rand()) /
-                                  (static_cast <float> (RAND_MAX / (MAX_SHORT - (MIN_SHORT)))));
+        return static_cast<short>
+                (MIN_SHORT + static_cast <float> (rand()) /
+                 (static_cast <float> (RAND_MAX / (MAX_SHORT - MIN_SHORT))));
     } else if (typeid(dummy) == typeid(unsigned short)) {
-        return static_cast<unsigned short>(static_cast <float> (rand()) /
-                                           (static_cast <float> (RAND_MAX / (MAX_USHORT))));
+        return static_cast<unsigned short>
+                (static_cast <float> (rand()) /
+                 (static_cast <float> (RAND_MAX / MAX_USHORT)));
     } else if (typeid(dummy) == typeid(int)) {
-        return static_cast<int>(MIN_INT + static_cast <float> (rand()) /
-                                (static_cast <float> (RAND_MAX / (MAX_INT - (MIN_INT)))));
+        return static_cast<int>
+                (MIN_INT + static_cast <float> (rand()) /
+                 (static_cast <float> (RAND_MAX / (MAX_INT - MIN_INT))));
     } else if (typeid(dummy) == typeid(unsigned int)) {
-        return static_cast<unsigned int>(static_cast <float> (rand()) /
-                                (static_cast <float> (RAND_MAX / (MAX_UINT))));
+        return static_cast<unsigned int>
+                (static_cast <float> (rand()) /
+                 (static_cast <float> (RAND_MAX / MAX_UINT)));
     } else if (typeid(dummy) == typeid(float)) {
         return (static_cast <float> (rand()) / (static_cast <float> (RAND_MAX)));
     } else if (typeid(dummy) == typeid(double)) {
@@ -49,6 +55,8 @@ T RNG(T dummy) {
     }
 }
 
+// Template instansiation
+///////////////////////////////////////////////////////////////////////////////
 template char RNG(char);
 template unsigned char RNG(unsigned char);
 template short RNG(short);

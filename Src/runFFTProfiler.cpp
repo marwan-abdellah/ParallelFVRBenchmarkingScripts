@@ -12,7 +12,7 @@
  */
 int main(int argc, char** argv)
 {
-    if (argc < 7) {
+    if (argc < 6) {
         std::cout << "run <n> <dimension> <type> <precision> <threading> <num cores>" << std::endl;
         std::cout << "***************************************************" << std::endl;
         std::cout << "<n> : number of elements in the array in 1d" << std::endl;
@@ -31,10 +31,15 @@ int main(int argc, char** argv)
     std::string type_ = argv[3];
     std::string precision_ = argv[4];
     std::string threading_ = argv[5];
-    const int numThreads_ = argv[6];
+
+    // Updating the number of threads
+    int numThreads = 1;
+    if (argc > 6) numThreads = atoi(argv[6]);
 
     std::cout << "n = " << n << ", dimension = " << dimension_
               << ", type = " << type_ <<  ", threading = " << threading_
+              << ", precision = " << precision_
+              << ", number of threads = " << numThreads
               << std::endl;
 
     // Updating the dimension selection
@@ -80,6 +85,5 @@ int main(int argc, char** argv)
         threading = PARALLEL;
 
     // Profile FFT operation
-    ProfileFFT(dimension, type, precision, threading, n, numThreads_);
+    ProfileFFT(dimension, type, precision, threading, n, numThreads);
 }
-	

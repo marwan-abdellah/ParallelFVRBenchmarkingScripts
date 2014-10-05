@@ -69,6 +69,7 @@ void serialFFTShift3D(T* data, const int N)
     profile.PrintProfile (log.str ());
 }
 
+
 template <class T>
 /**
  * @brief serialFFTShift3D
@@ -121,6 +122,7 @@ void serialFFTShift3D(const T* input , T* output, const int N)
         << " and type " << std::string(typeid(T).name()) << " is : ";
     profile.PrintProfile (log.str ());
 }
+
 
 template <class T>
 /**
@@ -181,6 +183,7 @@ void parallelFFTShift3D(T* data, const int N)
 
 
 }
+
 
 template <class T>
 /**

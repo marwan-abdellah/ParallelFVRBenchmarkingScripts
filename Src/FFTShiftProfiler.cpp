@@ -70,6 +70,7 @@ void ProfileFFTShift(const DIMENSION dimension, const DATA_FORMAT format,
         std::cout << "Wrong profile selection" << std::endl;
 }
 
+
 template <typename T>
 /**
  * @brief ProfileFFTShift_2D
@@ -90,6 +91,7 @@ T ProfileFFTShift_2D(const SHIFT_TYPE type, const THREADING threading,
 
     return ret;
 }
+
 
 template <typename T>
 /**

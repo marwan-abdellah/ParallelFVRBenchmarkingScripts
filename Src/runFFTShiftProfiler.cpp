@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include <stdlib.h>
+#include <omp.h>
 
 #include "Common.h"
 #include "FFTShiftProfiler.h"
@@ -20,14 +21,14 @@
 int main(int argc, char** argv) {
 
     if (argc < 4) {
-        std::cout << "run <n> <dimension> <type> <datatype> <threading> <num cores>" << std::endl;
+        std::cout << "run <n> <dimension> <type> <datatype> <threading> <num threads>" << std::endl;
         std::cout << "***************************************************" << std::endl;
         std::cout << "<n> : number of elements in the array in 1d" << std::endl;
         std::cout << "<dimension> : 2d or 3d" << std::endl;
         std::cout << "<type> : in-place(ip) or out-of-place (op)" << std::endl;
         std::cout << "<datatype> : char or uchar or short or ushort or int or float or double" << std::endl;
         std::cout << "<threading> : serial(s) or parallel(p)" << std::endl;
-        std::cout << "<num cores> : number of cores" << std::endl;
+        std::cout << "<num threads> : number of threads" << std::endl;
         std::cout << "***************************************************" << std::endl;
 
         return 0;
@@ -39,9 +40,18 @@ int main(int argc, char** argv) {
     std::string datatype = argv[4];
     std::string threading = argv[5];
 
+    // Updating the number of threads
+    int numThreads = 1;
+    if (argc > 6) numThreads = atoi(argv[6]);
+
+    // Set the number of threads during the run-time
+    omp_set_dynamic(0);
+    omp_set_num_threads(numThreads);
+
     std::cout << "n = " << n << ", dimension = " << dimension
-              << ", type = " << type << ", datatype = " << datatype
+              << ", type = " << type << ", dataty pe = " << datatype
               << ", threading = " << threading
+              << ", number of threads = " << numThreads
               << std::endl;
 
     // Updating the dimension selection
@@ -90,5 +100,4 @@ int main(int argc, char** argv) {
     ProfileFFTShift (dim, format, shiftType, thread, n);
 
     return 0;
-
 }

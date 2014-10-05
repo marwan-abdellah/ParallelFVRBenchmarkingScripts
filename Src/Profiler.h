@@ -6,24 +6,72 @@
 #include <fstream>
 #include <sstream>
 
+/**
+ * @brief The Profiler class
+ */
 class Profiler
 {
 public:
+    /**
+     * @brief Profiler
+     * @param function
+     */
     Profiler(const std::string function);
 
+    /**
+     * @brief Start
+     */
     void Start();
+
+    /**
+     * @brief End
+     */
     void End();
 
+    /**
+     * @brief Profile
+     */
     void Profile();
+
+    /**
+     * @brief LogProfile
+     */
+
     void LogProfile();
+    /**
+     * @brief PrintProfile
+     * @param message
+     */
     void PrintProfile(std::string message);
 
+    /**
+     * @brief GetTimeInMicrosSeconds
+     * @return
+     */
     double GetTimeInMicrosSeconds(void) const;
+
+    /**
+     * @brief GetTimeInMilliSeconds
+     * @return
+     */
     double GetTimeInMilliSeconds(void) const;
+
+    /**
+     * @brief GetTimeInSeconds
+     * @return
+     */
     double GetTimeInSeconds(void) const;
 
+    /**
+     * @brief GetFunctionName
+     * @return
+     */
     std::string GetFunctionName(void) const;
 
+    /**
+     * @brief WriteProfileToFile
+     * @param fileName
+     */
     static void WriteProfileToFile(std::string fileName = "FVR");
 
 private:
@@ -37,6 +85,10 @@ private:
     std::string _functionName;
 
 private:
+    /**
+     * @brief SetFunctionName
+     * @param functionName
+     */
     void SetFunctionName(std::string functionName);
 };
 

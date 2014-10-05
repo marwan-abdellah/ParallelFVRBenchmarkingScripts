@@ -16,6 +16,11 @@
 #define MAX_UINT        4294967295
 
 template <class T>
+/**
+ * @brief RNG
+ * @param dummy
+ * @return
+ */
 T RNG(T dummy) {
     if (typeid(dummy) == typeid(char)) {
         return static_cast<char>(MIN_CHAR + static_cast <float> (rand()) /

@@ -41,13 +41,16 @@ SET(SOURCES
     ${FVR_SOURCE_DIR}/FFTShift3D_OutofPlace.cpp
     ${FVR_SOURCE_DIR}/FFTShiftProfiler.cpp
     ${FVR_SOURCE_DIR}/Profiler.cpp
-    ${FVR_SOURCE_DIR}/FFT2D.cpp
+    ${FVR_SOURCE_DIR}/FFT2D_Single.cpp
+    ${FVR_SOURCE_DIR}/FFT2D_Double.cpp
+    ${FVR_SOURCE_DIR}/FFT2D_InPlace.cpp
+    ${FVR_SOURCE_DIR}/FFT2D_OutofPlace.cpp
     ${FVR_SOURCE_DIR}/FFT3D_Single.cpp
     ${FVR_SOURCE_DIR}/FFT3D_Double.cpp
     ${FVR_SOURCE_DIR}/FFT3D_InPlace.cpp
     ${FVR_SOURCE_DIR}/FFT3D_OutofPlace.cpp
     ${FVR_SOURCE_DIR}/FFTProfiler.cpp
-
+    ${FVR_SOURCE_DIR}/FFTProfiler.cpp
 )
 
 SET(CMAKE_C_FLAGS " -fpermissive -fPIC -O3 -pthread -fopenmp -pipe -DLINUX -D_BOOL -DREQUIRE_IOSTREAM -Wno-deprecated -fno-gnu-keywords -w")

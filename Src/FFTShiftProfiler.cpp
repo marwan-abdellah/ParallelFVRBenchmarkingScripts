@@ -5,6 +5,14 @@
 #include "FFTShift3D_OutofPlace.h"
 #include <iostream>
 
+/**
+ * @brief ProfileFFTShift
+ * @param dimension
+ * @param format
+ * @param type
+ * @param threading
+ * @param n
+ */
 void ProfileFFTShift(const DIMENSION dimension, const DATA_FORMAT format,
                      const SHIFT_TYPE type, const THREADING threading,
                      const int n) {
@@ -63,6 +71,13 @@ void ProfileFFTShift(const DIMENSION dimension, const DATA_FORMAT format,
 }
 
 template <typename T>
+/**
+ * @brief ProfileFFTShift_2D
+ * @param type
+ * @param threading
+ * @param n
+ * @return
+ */
 T ProfileFFTShift_2D(const SHIFT_TYPE type, const THREADING threading,
                         const int n) {
     T ret = NULL;
@@ -77,6 +92,13 @@ T ProfileFFTShift_2D(const SHIFT_TYPE type, const THREADING threading,
 }
 
 template <typename T>
+/**
+ * @brief ProfileFFTShift_3D
+ * @param type
+ * @param threading
+ * @param n
+ * @return
+ */
 T ProfileFFTShift_3D(const SHIFT_TYPE type, const THREADING threading,
                         const int n) {
     T ret = NULL;
@@ -90,6 +112,8 @@ T ProfileFFTShift_3D(const SHIFT_TYPE type, const THREADING threading,
     return ret;
 }
 
+// Template instanciation
+///////////////////////////////////////////////////////////////////////////////
 template char ProfileFFTShift_2D
 (const SHIFT_TYPE type, const THREADING threading, const int n);
 template uchar ProfileFFTShift_2D
@@ -102,5 +126,5 @@ template float ProfileFFTShift_2D
 (const SHIFT_TYPE type, const THREADING threading, const int n);
 template double ProfileFFTShift_2D
 (const SHIFT_TYPE type, const THREADING threading, const int n);
-
+///////////////////////////////////////////////////////////////////////////////
 

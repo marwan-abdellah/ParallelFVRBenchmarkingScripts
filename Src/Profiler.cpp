@@ -16,7 +16,6 @@ Profiler::Profiler(const std::string function)
     Start();
 }
 
-
 /**
  * @brief Profiler::Start
  */

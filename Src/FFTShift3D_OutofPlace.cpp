@@ -3,11 +3,14 @@
 #include "RandomNumberGeneration.h"
 
 #include <iostream>
+
+template <typename T>
 /**
  * @brief FFTShift3D_OUT_OF_PLACE
  * @param n
+ * @param threading
+ * @return
  */
-template <typename T>
 T FFTShift3D_OUT_OF_PLACE(const int n, const THREADING threading) {
 
     // Allocate the arrays
@@ -44,7 +47,8 @@ T FFTShift3D_OUT_OF_PLACE(const int n, const THREADING threading) {
     return 0;
 }
 
-
+// Template instanciation
+///////////////////////////////////////////////////////////////////////////////
 template
 char FFTShift3D_OUT_OF_PLACE(const int n, const THREADING threading) ;
 template
@@ -59,6 +63,6 @@ template
 float FFTShift3D_OUT_OF_PLACE(const int n, const THREADING threading) ;
 template
 double FFTShift3D_OUT_OF_PLACE(const int n, const THREADING threading) ;
-
+///////////////////////////////////////////////////////////////////////////////
 
 

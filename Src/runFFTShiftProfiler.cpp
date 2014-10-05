@@ -10,6 +10,13 @@
 #include "Common.h"
 #include "FFTShiftProfiler.h"
 
+
+/**
+ * @brief main Profiles the FFTShift operations in the FVR pipeline.
+ * @param argc
+ * @param argv
+ * @return
+ */
 int main(int argc, char** argv) {
 
     if (argc < 4) {

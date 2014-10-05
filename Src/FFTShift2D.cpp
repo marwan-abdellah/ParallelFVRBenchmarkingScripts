@@ -4,6 +4,11 @@
 #include <typeinfo>
 
 template <class T>
+/**
+ * @brief serialFFTShift2D
+ * @param data
+ * @param N
+ */
 void serialFFTShift2D(T* data, const int N)
 {
     START_PROFILING();
@@ -38,6 +43,11 @@ void serialFFTShift2D(T* data, const int N)
 
 
 template <class T>
+/**
+ * @brief parallelFFTShift2D
+ * @param data
+ * @param N
+ */
 void parallelFFTShift2D(T* data, const int N)
 {
     START_PROFILING();
@@ -72,6 +82,12 @@ void parallelFFTShift2D(T* data, const int N)
 }
 
 template <class T>
+/**
+ * @brief serialFFTShift2D
+ * @param input
+ * @param output
+ * @param N
+ */
 void serialFFTShift2D(const T* input, T* output, const int N)
 {
     START_PROFILING();
@@ -104,6 +120,12 @@ void serialFFTShift2D(const T* input, T* output, const int N)
 
 
 template <class T>
+/**
+ * @brief parallelFFTShift2D
+ * @param input
+ * @param output
+ * @param N
+ */
 void parallelFFTShift2D(const T* input, T* output, const int N)
 {
     START_PROFILING();
@@ -136,6 +158,8 @@ void parallelFFTShift2D(const T* input, T* output, const int N)
 }
 
 
+// Template instanciation
+///////////////////////////////////////////////////////////////////////////////
 template
 void serialFFTShift2D(char* data, const int N);
 template
@@ -169,7 +193,7 @@ template
 void parallelFFTShift2D(float* data, const int N);
 template
 void parallelFFTShift2D(double* data, const int N);
-
+///////////////////////////////////////////////////////////////////////////////
 template
 void serialFFTShift2D(const char* input, char* output, const int N);
 template
@@ -186,7 +210,7 @@ template
 void serialFFTShift2D(const float* input, float* output, const int N);
 template
 void serialFFTShift2D(const double* input, double* output, const int N);
-
+///////////////////////////////////////////////////////////////////////////////
 template
 void parallelFFTShift2D(const char* input, char* output, const int N);
 template
@@ -203,3 +227,4 @@ template
 void parallelFFTShift2D(const float* input, float* output, const int N);
 template
 void parallelFFTShift2D(const double* input, double* output, const int N);
+///////////////////////////////////////////////////////////////////////////////

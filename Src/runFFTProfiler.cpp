@@ -4,10 +4,16 @@
 #include "Common.h"
 #include "FFTProfiler.h"
 
+/**
+ * @brief main Profiles FFT operations in the FVR pipeline.
+ * @param argc
+ * @param argv
+ * @return
+ */
 int main(int argc, char** argv)
 {
-    if (argc < 5) {
-        std::cout << "run <n> <dimension> <type> <threading> <num cores>" << std::endl;
+    if (argc < 7) {
+        std::cout << "run <n> <dimension> <type> <precision> <threading> <num cores>" << std::endl;
         std::cout << "***************************************************" << std::endl;
         std::cout << "<n> : number of elements in the array in 1d" << std::endl;
         std::cout << "<dimension> : 2d or 3d" << std::endl;
@@ -25,7 +31,7 @@ int main(int argc, char** argv)
     std::string type_ = argv[3];
     std::string precision_ = argv[4];
     std::string threading_ = argv[5];
-    const int numThreads_ = 8; // argv[6];
+    const int numThreads_ = argv[6];
 
     std::cout << "n = " << n << ", dimension = " << dimension_
               << ", type = " << type_ <<  ", threading = " << threading_

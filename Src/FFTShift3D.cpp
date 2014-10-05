@@ -13,6 +13,11 @@
 #include <typeinfo>
 
 template <class T>
+/**
+ * @brief serialFFTShift3D
+ * @param data
+ * @param N
+ */
 void serialFFTShift3D(T* data, const int N)
 {
     START_PROFILING();
@@ -65,6 +70,12 @@ void serialFFTShift3D(T* data, const int N)
 }
 
 template <class T>
+/**
+ * @brief serialFFTShift3D
+ * @param input
+ * @param output
+ * @param N
+ */
 void serialFFTShift3D(const T* input , T* output, const int N)
 {
     START_PROFILING();
@@ -112,6 +123,11 @@ void serialFFTShift3D(const T* input , T* output, const int N)
 }
 
 template <class T>
+/**
+ * @brief parallelFFTShift3D
+ * @param data
+ * @param N
+ */
 void parallelFFTShift3D(T* data, const int N)
 {
     START_PROFILING();
@@ -167,6 +183,12 @@ void parallelFFTShift3D(T* data, const int N)
 }
 
 template <class T>
+/**
+ * @brief parallelFFTShift3D
+ * @param input
+ * @param output
+ * @param N
+ */
 void parallelFFTShift3D(const T* input , T* output, const int N)
 {
     START_PROFILING();
@@ -213,6 +235,8 @@ void parallelFFTShift3D(const T* input , T* output, const int N)
     profile.PrintProfile (log.str ());
 }
 
+// Template instanciation
+///////////////////////////////////////////////////////////////////////////////
 template
 void serialFFTShift3D(char* data, const int N);
 template
@@ -229,24 +253,27 @@ template
 void serialFFTShift3D(float* data, const int N);
 template
 void serialFFTShift3D(double* data, const int N);
-
+///////////////////////////////////////////////////////////////////////////////
 template
 void serialFFTShift3D(const char* input , char* output, const int N);
 template
-void serialFFTShift3D(const unsigned char* input , unsigned char* output, const int N);
+void serialFFTShift3D(const unsigned char* input , unsigned char* output,
+    const int N);
 template
 void serialFFTShift3D(const short* input , short* output, const int N);
 template
-void serialFFTShift3D(const unsigned short* input , unsigned short* output, const int N);
+void serialFFTShift3D
+(const unsigned short* input , unsigned short* output, const int N);
 template
 void serialFFTShift3D(const int* input , int* output, const int N);
 template
-void serialFFTShift3D(const unsigned int* input , unsigned int* output, const int N);
+void serialFFTShift3D(
+const unsigned int* input , unsigned int* output, const int N);
 template
 void serialFFTShift3D(const float* input , float* output, const int N);
 template
 void serialFFTShift3D(const double* input , double* output, const int N);
-
+///////////////////////////////////////////////////////////////////////////////
 template
 void parallelFFTShift3D(char* data, const int N);
 template
@@ -263,20 +290,24 @@ template
 void parallelFFTShift3D(float* data, const int N);
 template
 void parallelFFTShift3D(double* data, const int N);
-
+///////////////////////////////////////////////////////////////////////////////
 template
 void parallelFFTShift3D(const char* input , char* output, const int N);
 template
-void parallelFFTShift3D(const unsigned char* input , unsigned char* output, const int N);
+void parallelFFTShift3D
+(const unsigned char* input , unsigned char* output, const int N);
 template
 void parallelFFTShift3D(const short* input , short* output, const int N);
 template
-void parallelFFTShift3D(const unsigned short* input , unsigned short* output, const int N);
+void parallelFFTShift3D
+(const unsigned short* input , unsigned short* output, const int N);
 template
 void parallelFFTShift3D(const int* input , int* output, const int N);
 template
-void parallelFFTShift3D(const unsigned int * input , unsigned int* output, const int N);
+void parallelFFTShift3D
+(const unsigned int * input , unsigned int* output, const int N);
 template
 void parallelFFTShift3D(const float* input , float* output, const int N);
 template
 void parallelFFTShift3D(const double* input , double* output, const int N);
+///////////////////////////////////////////////////////////////////////////////

@@ -3,10 +3,14 @@
 #include "RandomNumberGeneration.h"
 
 #include <iostream>
-/**
- * @brief FFTShift3D_OUT_OF_PLACE
- */
+
 template <typename T>
+/**
+ * @brief FFTShift2D_OUT_OF_PLACE
+ * @param n
+ * @param threading
+ * @return
+ */
 T FFTShift2D_OUT_OF_PLACE(const int n, const THREADING threading) {
 
     // Allocate the arrays
@@ -44,6 +48,8 @@ T FFTShift2D_OUT_OF_PLACE(const int n, const THREADING threading) {
 }
 
 
+// Template instanciation
+///////////////////////////////////////////////////////////////////////////////
 template
 char FFTShift2D_OUT_OF_PLACE(const int n, const THREADING threading) ;
 template
@@ -58,7 +64,7 @@ template
 float FFTShift2D_OUT_OF_PLACE(const int n, const THREADING threading) ;
 template
 double FFTShift2D_OUT_OF_PLACE(const int n, const THREADING threading) ;
-
+///////////////////////////////////////////////////////////////////////////////
 
 
 

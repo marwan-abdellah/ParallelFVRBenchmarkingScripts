@@ -1,6 +1,8 @@
 #ifndef COMMON_H
 #define COMMON_H
 
+#include "half.h"
+
 enum THREADING {
     SERIAL = 0,
     PARALLEL = 1

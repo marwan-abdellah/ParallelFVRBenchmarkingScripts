@@ -3,6 +3,8 @@
 #include <iostream>
 #include <typeinfo>
 
+#include "Common.h"
+
 #define MIN_CHAR        -127
 #define MAX_CHAR        127
 #define MIN_UCHAR       0
@@ -48,6 +50,10 @@ T RNG(T dummy) {
                  (static_cast <float> (RAND_MAX / MAX_UINT)));
     } else if (typeid(dummy) == typeid(float)) {
         return (static_cast <float> (rand()) / (static_cast <float> (RAND_MAX)));
+    } else if (typeid(dummy) == typeid(int)) {
+        float frn = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX));
+        half hrn(frn)  ;
+        return hrn;
     } else if (typeid(dummy) == typeid(double)) {
         return ((rand()) / (static_cast <double> (RAND_MAX)));
     } else {
@@ -63,6 +69,7 @@ template short RNG(short);
 template unsigned short RNG(unsigned short);
 template int RNG(int);
 template unsigned int RNG(unsigned int);
+template half RNG(half);
 template float RNG(float);
 template double RNG(double);
 

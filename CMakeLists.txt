@@ -53,8 +53,10 @@ SET(SOURCES
     ${FVR_SOURCE_DIR}/FFTProfiler.cpp
 )
 
-SET(CMAKE_C_FLAGS " -fpermissive -fPIC -O3 -pthread -fopenmp -pipe -DLINUX -D_BOOL -DREQUIRE_IOSTREAM -Wno-deprecated -fno-gnu-keywords -w")
+SET(CMAKE_C_FLAGS "  -fpermissive -fPIC -O3 -pthread -fopenmp -pipe -DLINUX -D_BOOL -DREQUIRE_IOSTREAM -Wno-deprecated -fno-gnu-keywords -w")
 SET(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS}")
+
+LINK_LIBRARIES(/usr/lib/x86_64-linux-gnu/libHalf.so)
     
 # Generate the executable considering. 
 ADD_EXECUTABLE(profileFFTShift ${FVR_SOURCE_DIR}/runFFTShiftProfiler.cpp ${SOURCES})
